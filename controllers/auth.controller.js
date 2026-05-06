@@ -115,7 +115,8 @@ export const loginWithGoogle = async (req, res, next) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
-      sameSite: "none"
+      sameSite: "none",
+      secure:true,
     });
 
     return res.json({ message: "Logged in!" });
@@ -166,6 +167,8 @@ export const loginWithGoogle = async (req, res, next) => {
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
       sameSite: "none",
+      secure:true,
+
     });
     mongooseSession.commitTransaction();
 
@@ -252,7 +255,9 @@ export const loginWithGithub = async (req, res) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
-      sameSite: "none"
+      sameSite: "none",
+      secure:true,
+
     });
 
     return res.redirect("http://localhost:5173/");
@@ -303,14 +308,18 @@ export const loginWithGithub = async (req, res) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
-      sameSite: "none"
+      sameSite: "none",
+      secure:true,
+
     });
 
     res.cookie("sid", session.id, {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
-      sameSite: "none"
+      sameSite: "none",
+      secure:true,
+
 
     });
     mongooseSession.commitTransaction();
