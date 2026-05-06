@@ -1,0 +1,43 @@
+{
+  "name": "practice3",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon express.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch  --no-deprecation --env-file=.env express.js",
+    "setup": "node --env-file=.env config/setup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1032.0",
+    "@aws-sdk/cloudfront-signer": "^3.1031.0",
+    "@aws-sdk/s3-request-presigner": "^3.1032.0",
+    "bcrypt": "^5.1.1",
+    "bullmq": "^5.73.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.0",
+    "express": "^4.21.2",
+    "google-auth-library": "^9.15.1",
+    "ioredis": "^5.10.1",
+    "jsonwebtoken": "^9.0.2",
+    "mime-types": "^2.1.35",
+    "mongodb": "^6.13.1",
+    "mongoose": "^8.13.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.10.1",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "razorpay": "^2.9.6",
+    "redis": "^5.5.6",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
