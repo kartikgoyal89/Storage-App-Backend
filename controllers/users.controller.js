@@ -202,7 +202,7 @@ export const login = async (req, res, next) => {
     res.cookie("sid", sessionId, {
       httpOnly: true,
       signed: true,
-      sameSite: "lax",
+      sameSite: "none",
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     });
     res.json({ message: "Logged in Successfully" });
