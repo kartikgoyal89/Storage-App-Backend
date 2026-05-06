@@ -13,10 +13,7 @@ const clientID = process.env.GITHUB_CLIENT_ID;
 const clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
 export const sendOtpController = async (req, res, next) => {
-  console.log("API RUNNING");
   const { email } = req.body;
-  console.log("Backend",req.body);
-  console.log(email);
   try {
     const otp = await sendOtp(email);
     res.status(201).json({ message: `OTP Sent on ${email}` });
@@ -118,6 +115,7 @@ export const loginWithGoogle = async (req, res, next) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
+      sameSite: "none"
     });
 
     return res.json({ message: "Logged in!" });
@@ -167,6 +165,7 @@ export const loginWithGoogle = async (req, res, next) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
+      sameSite: "none",
     });
     mongooseSession.commitTransaction();
 
@@ -253,6 +252,7 @@ export const loginWithGithub = async (req, res) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
+      sameSite: "none"
     });
 
     return res.redirect("http://localhost:5173/");
@@ -303,12 +303,15 @@ export const loginWithGithub = async (req, res) => {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
+      sameSite: "none"
     });
 
     res.cookie("sid", session.id, {
       httpOnly: true,
       maxAge: 60 * 1000 * 24 * 7,
       signed: true,
+      sameSite: "none"
+
     });
     mongooseSession.commitTransaction();
 
