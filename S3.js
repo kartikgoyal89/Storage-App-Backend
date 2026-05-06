@@ -20,7 +20,7 @@ export const myS3Client = new S3Client({
 
 export const createUploadSignerUrl = async({key,contentType}) => {
     const command = new PutObjectCommand({
-        Bucket: "kartik-storage-app",
+        Bucket: "kartik-storage",
         Key: key,
         ContentType: contentType
     })
@@ -36,7 +36,7 @@ export const createUploadSignerUrl = async({key,contentType}) => {
 
 export const createGetSignedUrl = async({key,download = false,filename}) => {
     const command = new GetObjectCommand({
-        Bucket: "kartik-storage-app",
+        Bucket: "kartik-storage",
         Key: key,
         ResponseContentDisposition: `${download ? "attachment" : "inline"}; filename=${encodeURIComponent(filename)}`
     })
@@ -51,7 +51,7 @@ export const createGetSignedUrl = async({key,download = false,filename}) => {
 
 export const getS3FileMetaData = async(key) => {
     const command = new HeadObjectCommand({
-        Bucket: "kartik-storage-app",
+        Bucket: "kartik-storage",
         Key: key,
     })
     return await myS3Client.send(command);
@@ -59,7 +59,7 @@ export const getS3FileMetaData = async(key) => {
 
 export const deleteS3File = async(key) => {
     const command = new DeleteObjectCommand({
-        Bucket: "kartik-storage-app",
+        Bucket: "kartik-storage",
         Key: key
     })
 
@@ -68,7 +68,7 @@ export const deleteS3File = async(key) => {
 
 export const deleteS3MulitpleFiles = async(keys) => {
     const command = new DeleteObjectsCommand({
-        Bucket: "kartik-storage-app",
+        Bucket: "kartik-storage",
         Delete: {
             Objects: keys,
             Quiet: false,
