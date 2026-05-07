@@ -275,6 +275,8 @@ export const uploadInitiate = async(req,res) => {
 
    const filename = req.body.name || "untitled";
    const size = req.body.size;
+   console.log("Size",size);
+   console.log("Typeof",typeof(size));
    const extension = path.extname(filename);
 
    const user = await User.findById(req.user._id);
@@ -300,7 +302,7 @@ export const uploadInitiate = async(req,res) => {
      name: filename,
      parentDirId: parentDirData._id,
      userId: req.user._id,
-     size: Number(size),
+     size: parseInt(size),
      isUploading: true,
    });
    await insertedFile.save();
