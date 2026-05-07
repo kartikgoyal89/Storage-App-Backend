@@ -267,7 +267,7 @@ export const uploadInitiate = async(req,res) => {
      userId: req.user._id,
    }).lean();
 
-
+  console.log("parentDirData", parentDirData);
    // Check if parent directory exists
    if (!parentDirData) {
      return res.status(404).json({ error: "Parent directory not found!" });
@@ -281,8 +281,12 @@ export const uploadInitiate = async(req,res) => {
    const extension = path.extname(filename);
 
    const user = await User.findById(req.user._id);
+   console.log({user});
    const rootDir = await Directories.findById(req.user.rootDirId);
    const remainingSpace = user.maxStorageInBytes - rootDir.size;
+   console.log({rootDir});
+   console.log({remainingSpace});
+
 
    if(size > remainingSpace){
      console.log("File size too large!!");
@@ -306,6 +310,8 @@ export const uploadInitiate = async(req,res) => {
      size: parseInt(size),
      isUploading: true,
    });
+
+   console.log("Inserted File",insertedFile);
    await insertedFile.save();
 
    const uploadSignedUrl = await createUploadSignerUrl({key: `${insertedFile.id}${extension}`,contentType: req.body.contentType});
