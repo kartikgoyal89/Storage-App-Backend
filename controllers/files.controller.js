@@ -260,6 +260,7 @@ export const deleteFile = async (req, res, next) => {
 export const uploadInitiate = async(req,res) => {
    const parentDirId = req.body.parentDirId;
    console.log("parentDirId ", parentDirId);
+   console.log("Req.body",req.body);
  try {
    const parentDirData = await Directories.findOne({
      _id: parentDirId,
