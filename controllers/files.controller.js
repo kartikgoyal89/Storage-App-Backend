@@ -29,8 +29,8 @@ export const createFile = async (req, res, next) => {
     userId: req.user._id,
   }).lean();
 
-  const filename = req.headers.filename || "untitled";
-  const size = req.headers.filesize;
+  const filename = req.headers.filename || req.body.filename || "untitled";
+  const size = req.headers.filesize || req.body.filesize;
   const extension = path.extname(filename);
 
   const rootDir = await Directories.findById(req.user.rootDirId);
