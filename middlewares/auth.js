@@ -2,7 +2,8 @@
 import crypto from "node:crypto";
 import User from "../models/users.model.js";
 import Session from "../models/session.model.js";
-import redisClient from "../config/practice_redis.js";
+// import redisClient from "../config/practice_redis.js";
+import redisClient from "../config/redis.js"
 
 export default async function checkAuth(req, res, next) {
   try {
