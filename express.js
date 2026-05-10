@@ -49,6 +49,11 @@ app.use("/user", userRoutes);
 app.use("/webhooks", webhookRoutes);
 app.use("/auth", authRoutes);
 
+app.use("/",(req,res) => {
+    console.log("Stroage App is running!");
+});
+
+
 app.use((err, req, res, next) => {
   res.status(500).json({
     error: "Something Went Wrong!",
