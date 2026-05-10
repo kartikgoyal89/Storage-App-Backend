@@ -50,7 +50,8 @@ app.use("/webhooks", webhookRoutes);
 app.use("/auth", authRoutes);
 
 app.use("/",(req,res) => {
-    console.log("Stroage App is running!");
+    console.log("Storage App is running!");
+    res.send("Storage App is running!");
 });
 
 
