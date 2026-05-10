@@ -51,7 +51,7 @@ app.use("/auth", authRoutes);
 
 app.use("/",(req,res) => {
     console.log("Storage App is running!");
-    res.json({message: "Storage App is running!!!"})
+    res.json({message: "Storage App is running"})
 });
 
 
